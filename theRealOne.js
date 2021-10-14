@@ -56,7 +56,7 @@ function updateData(response) {
   let humidity = document.querySelector(".humidity");
   humidity.innerHTML = `${response.data.main.humidity}`;
 
-  let calTemperature = response.data.main.temp;
+  calTemperature = response.data.main.temp;
 
   let currentTemp = document.querySelector(".currentDegree");
   currentTemp.innerHTML = `${Math.round(calTemperature)}`;
@@ -94,7 +94,5 @@ function changeBack(event) {
 let fahrChange = document.querySelector("#unitFahr");
 fahrChange.addEventListener("click", changeToFahr);
 
-let calChange = document.querySelector("$unitCal");
+let calChange = document.querySelector("#unitCal");
 calChange.addEventListener("click", changeBack);
-
-let calTemperature = null;
