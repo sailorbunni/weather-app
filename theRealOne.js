@@ -56,10 +56,10 @@ function updateData(response) {
   let humidity = document.querySelector(".humidity");
   humidity.innerHTML = `${response.data.main.humidity}`;
 
-  let celTemperature = response.data.main.temp;
+  let calTemperature = response.data.main.temp;
 
   let currentTemp = document.querySelector(".currentDegree");
-  currentTemp.innerHTML = `${Math.round(celTemperature)}`;
+  currentTemp.innerHTML = `${Math.round(calTemperature)}`;
 
   let highTemp = document.querySelector(".high");
   highTemp.innerHTML = `${Math.round(response.data.main.temp_max)}`;
@@ -85,7 +85,16 @@ function changeToFahr(event) {
   let fahrTemp = (calTemperature * 9) / 5 + 32;
   temp.innerHTML = `${Math.round(fahrTemp)}`;
 }
+function changeBack(event) {
+  event.preventDefault();
+  let temp = document.querySelector(".currentDegree");
+  temp.innerHTML = `${Math.round(calTemperature)}`;
+}
 
 let fahrChange = document.querySelector("#unitFahr");
 fahrChange.addEventListener("click", changeToFahr);
+
+let calChange = document.querySelector("$unitCal");
+calChange.addEventListener("click", changeBack);
+
 let calTemperature = null;
