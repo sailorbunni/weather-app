@@ -77,3 +77,12 @@ function updateData(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 }
+function changeToFahr(event) {
+  event.preventDefault();
+  let temp = document.querySelector(".currentDegree");
+  let fahrTemp = (temp.innerHTML * 9) / 5 + 32;
+  temp.innerHTML = Math.round(fahrTemp);
+}
+
+let fahrChange = document.querySelector("#unitFahr");
+fahrChange.addEventListener("click", changeToFahr);
