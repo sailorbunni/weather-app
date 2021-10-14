@@ -81,7 +81,7 @@ function changeToFahr(event) {
   event.preventDefault();
   let temp = document.querySelector(".currentDegree");
   let fahrTemp = (temp.innerHTML * 9) / 5 + 32;
-  temp.innerHTML = `${Math.round(fahrTemp)}``;
+  temp.innerHTML = `${Math.round(fahrTemp)}`;
 }
 
 let fahrChange = document.querySelector("#unitFahr");
