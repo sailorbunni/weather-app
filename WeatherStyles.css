@@ -3,8 +3,11 @@
   margin: 0 auto;
   font-family: "Abel", sans-serif;
 }
-h1 {
-  font-size: 70px;
+.location {
+  font-size: 80px;
+}
+.country {
+  font-size: 30px;
 }
 .dateTime {
   font-size: 18px;

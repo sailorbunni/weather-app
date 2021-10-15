@@ -19,7 +19,7 @@ let day = days[now.getDay()];
 let months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 let month = months[now.getMonth()];
 
-h2.innerHTML = `${month}/${date}/${year} <br /> ${day} ${hours}:${fullMinutes}`;
+h2.innerHTML = `Last Updated: ${month}/${date}/${year} <br /> ${day} ${hours}:${fullMinutes}`;
 
 function changePlace(event) {
   event.preventDefault();
@@ -50,8 +50,11 @@ button.addEventListener("click", getPosition);
 
 function updateData(response) {
   console.log(response);
-  let h1 = document.querySelector("h1");
+  let h1 = document.querySelector(".location");
   h1.innerHTML = `${response.data.name}`;
+
+  let country = document.querySelector(".country");
+  country.innerHTML = `${response.data.sys.country}`;
 
   let humidity = document.querySelector(".humidity");
   humidity.innerHTML = `${response.data.main.humidity}`;
