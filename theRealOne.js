@@ -64,11 +64,15 @@ function updateData(response) {
   let currentTemp = document.querySelector(".currentDegree");
   currentTemp.innerHTML = `${Math.round(calTemperature)}`;
 
+  highCel = response.data.main.temp_max;
+
   let highTemp = document.querySelector(".high");
-  highTemp.innerHTML = `${Math.round(response.data.main.temp_max)}`;
+  highTemp.innerHTML = `${Math.round(highCel)}`;
+
+  lowCel = response.data.main.temp_min;
 
   let lowTemp = document.querySelector(".low");
-  lowTemp.innerHTML = `${Math.round(response.data.main.temp_min)}`;
+  lowTemp.innerHTML = `${Math.round(lowCel)}`;
 
   let weather = document.querySelector(".weatherState");
   weather.innerHTML = `${response.data.weather[0].main}`;
@@ -87,11 +91,21 @@ function changeToFahr(event) {
   let temp = document.querySelector(".currentDegree");
   let fahrTemp = (calTemperature * 9) / 5 + 32;
   temp.innerHTML = `${Math.round(fahrTemp)}`;
+  let fahrHigh = document.querySelector(".high");
+  let newFahrHigh = (highCel * 9) / 5 + 32;
+  fahrHigh.innerHTML = `${Math.round(newFahrHigh)}`;
+  let fahrLow = document.querySelector(".low");
+  let newFahrLow = (lowCel * 9) / 5 + 32;
+  fahrLow.innerHTML = `${Math.round(newFahrLow)}`;
 }
 function changeBack(event) {
   event.preventDefault();
   let temp = document.querySelector(".currentDegree");
   temp.innerHTML = `${Math.round(calTemperature)}`;
+  let high = document.querySelector(".high");
+  high.innerHTML = `${Math.round(highCel)}`;
+  let low = document.querySelector(".low");
+  low.innerHTML = `${Math.round(lowCel)}`;
 }
 
 let fahrChange = document.querySelector("#unitFahr");
