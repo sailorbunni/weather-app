@@ -31,6 +31,14 @@ function changePlace(event) {
   axios.get(apiUrl).then(updateData);
 }
 
+function forecast(coordinates) {
+  let lat = coordinates.lat;
+  let lon = coordinates.lon;
+  let apiKey = "ed238469f9b5e9d801834270e65449bc";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function currentPosition(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
@@ -50,6 +58,9 @@ button.addEventListener("click", getPosition);
 
 function updateData(response) {
   console.log(response);
+
+  forecast(response.data.coord);
+
   let h1 = document.querySelector(".location");
   h1.innerHTML = `${response.data.name}`;
 

@@ -4,7 +4,7 @@
   font-family: "Abel", sans-serif;
 }
 .location {
-  font-size: 80px;
+  font-size: 75px;
 }
 .country {
   font-size: 30px;
@@ -17,7 +17,7 @@ ul {
   list-style: none;
 }
 .forecast {
-  font-size: 30px;
+  font-size: 25px;
   position: relative;
   top: 60px;
 }
