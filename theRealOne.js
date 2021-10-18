@@ -39,6 +39,76 @@ function forecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector(".forecast");
+  forecastElement.innerHTML = `
+    <li>
+      <img src="http://openweathermap.org/img/wn/${
+        forecast[0].weather[0].icon
+      }@2x.png" id="firstIcon" />
+      <span class="firstDate">${formatDay(
+        forecast[0].dt
+      )}</span> <span class="firstHigh">${Math.round(
+    forecast[0].temp.max
+  )}º</span> |
+      <span class="firstLow">${Math.round(forecast[0].temp.min)}º</span>
+    </li>
+    <li>
+      <img src="http://openweathermap.org/img/wn/${
+        forecast[1].weather[0].icon
+      }@2x.png" id="secondIcon" />
+      <span class="secondDate">${formatDay(
+        forecast[1].dt
+      )}</span> <span class="secondHigh">${Math.round(
+    forecast[1].temp.max
+  )}º</span> |
+      <span class="secondLow">${Math.round(forecast[1].temp.min)}º</span>
+    </li>
+    <li>
+      <img src="http://openweathermap.org/img/wn/${
+        forecast[2].weather[0].icon
+      }@2x.png" id="thirdIcon" />
+      <span class="thirdDate">${formatDay(
+        forecast[2].dt
+      )}</span> <span class="thirdHigh">${Math.round(
+    forecast[2].temp.max
+  )}º</span> |
+      <span class="thirdLow">${Math.round(forecast[2].temp.min)}º</span>
+    </li>
+    <li>
+      <img src="http://openweathermap.org/img/wn/${
+        forecast[3].weather[0].icon
+      }@2x.png" id="forthIcon" />
+      <span class="forthDate">${formatDay(
+        forecast[3].dt
+      )}</span> <span class="forthHigh">${Math.round(
+    forecast[3].temp.max
+  )}º</span> |
+      <span class="forthLow">${Math.round(forecast[3].temp.min)}º</span>
+    </li>
+    <li>
+      <img src="http://openweathermap.org/img/wn/${
+        forecast[4].weather[0].icon
+      }@2x.png" id="fifthIcon" />
+      <span class="fifthDate">${formatDay(
+        forecast[4].dt
+      )}</span> <span class="fifthHigh">${Math.round(
+    forecast[4].temp.max
+  )}º</span> |
+      <span class="fifthLow">${Math.round(forecast[4].temp.min)}º</span>
+    </li>`;
+}
+
 function currentPosition(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
